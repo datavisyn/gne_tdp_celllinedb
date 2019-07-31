@@ -19,14 +19,14 @@ views['celllines'] = DBViewBuilder().idtype(idtype).table('sinfo') \
   .column('species', type='categorical') \
   .column('ethnicity', type='categorical') \
   .column('msi_status', type='categorical') \
+  .assign_ids() \
+  .call(inject_where) \
+  .build()
   # .column('morphology' type='categorical') \
   # .column('pam_subtype' type='categorical') \
   # .column('has_rnaseq' type='categorical') \
   # .column('has_snparray' type='categorical') \
   # .column('has_wes' type='categorical') \
-  .assign_ids() \
-  .call(inject_where) \
-  .build()
 
 # notes:
 # by convention the 'id' column contains the identifier column of a row
