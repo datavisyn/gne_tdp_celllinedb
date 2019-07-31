@@ -44,6 +44,26 @@
         "extras": {
           "factory": "new"
         }
+      },
+      {
+        "type": "tdpView",
+        "id": "gne_cellcentral_proxy",
+        "module": "views/CellCentralProxy",
+        "extras": {
+          "name": "CellCentral",
+          "idType": "GNECellline",
+          "selection": "chooser"
+        }
+      },
+      {
+        "type": "tdpView",
+        "id": "gne_genehub_proxy",
+        "module": "views/GeneHubProxy",
+        "extras": {
+          "name": "GeneHub",
+          "idType": "Ensembl",
+          "selection": "chooser"
+        }
       }
     ]
   }
