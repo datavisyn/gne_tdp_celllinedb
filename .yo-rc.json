@@ -27,6 +27,24 @@
     },
     "entries": "./index.js",
     "ignores": [],
-    "extensions": []
+    "extensions": [
+      {
+        "type": "tdpScore",
+        "id": "expression_score",
+        "module": "scores/ExpressionScore",
+        "extras": {
+          "name": "Expression Score",
+          "idtype": "GNECellline"
+        }
+      },
+      {
+        "type": "tdpScoreImpl",
+        "id": "expression_score",
+        "module": "scores/ExpressionScore",
+        "extras": {
+          "factory": "new"
+        }
+      }
+    ]
   }
 }

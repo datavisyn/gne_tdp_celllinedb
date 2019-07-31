@@ -28,6 +28,13 @@ views['celllines'] = DBViewBuilder().idtype(idtype).table('sinfo') \
   # .column('has_snparray' type='categorical') \
   # .column('has_wes' type='categorical') \
 
+views['expression_score'] = DBViewBuilder().idtype(idtype) \
+  .query("""SELECT clid as id, nrpkm as score FROM genomics WHERE gene_id = :ensg """) \
+  .arg('ensg') \
+  .call(inject_where) \
+  .build()
+
+
 # notes:
 # by convention the 'id' column contains the identifier column of a row
 # derive_columns ... try to automatically derive column and column types

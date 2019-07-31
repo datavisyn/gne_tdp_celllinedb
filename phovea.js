@@ -28,6 +28,17 @@ module.exports = function(registry) {
   'idType': 'GNECellline',
   'selection': 'none'
  });
+
+
+  registry.push('tdpScore', 'expression_score', function() { return import('./src/scores/ExpressionScore'); }, {
+  'name': 'Expression Score',
+  'idtype': 'GNECellline'
+ });
+
+
+  registry.push('tdpScoreImpl', 'expression_score', function() { return import('./src/scores/ExpressionScore'); }, {
+  'factory': 'new'
+ });
   // generator-phovea:end
 };
 
