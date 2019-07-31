@@ -1,6 +1,6 @@
 from tdp_core.dbview import DBViewBuilder, DBConnector, add_common_queries, inject_where, DBMapping
 
-idtype = 'Celline2' # idtype of our rows
+idtype = 'GNECellline' # idtype of our rows
 
 columns = ['tissuediagnosis', 'primarytissue', 'celllinename', 'age', 'gender', 'species', 'canonicalname', 'ccle_name']
 
@@ -8,13 +8,20 @@ columns = ['tissuediagnosis', 'primarytissue', 'celllinename', 'age', 'gender', 
 views = dict()
 
 views['celllines'] = DBViewBuilder().idtype(idtype).table('sinfo') \
-.query("""SELECT d.clid as id, d.* FROM sinfo d """) \
-.derive_columns() \
-.assign_ids() \
-.call(inject_where) \
-.build()
-
-# .column('tissue', type='categorical') \
+  .query("""SELECT d.clid as id, d.* FROM sinfo d """) \
+  .derive_columns() \
+  .column('tissue', type='categorical') \
+  .column('primarytissue', type='categorical') \
+  .column('primarytissuemetaclass', type='categorical') \
+  .column('tissuediagnosis', type='categorical') \
+  .column('tissuediagnosismetaclass', type='categorical') \
+  .column('gender', type='categorical') \
+  .column('species', type='categorical') \
+  .column('ethnicity', type='categorical') \
+  .column('msi_status', type='categorical') \
+  .assign_ids() \
+  .call(inject_where) \
+  .build()
 
 # notes:
 # by convention the 'id' column contains the identifier column of a row

@@ -11,6 +11,23 @@ module.exports = function(registry) {
   /// #endif
   // generator-phovea:begin
 
+
+
+  registry.push('ordinoStartMenuSubSection', 'gne_cellline_start', function() { return import('./src/menu/GNECellLineSubSection'); }, {
+  'name': 'GNE Cell Line',
+  'description': 'GNE Cell Line Panel',
+  'viewId': 'gne_cellline_list',
+  'idType': 'GNECellline',
+  'selection': 'none',
+  'cssClass': 'gne-cellline-entry-point'
+ });
+
+
+  registry.push('tdpView', 'gne_cellline_list', function() { return import('./src/views/GNECelllineList'); }, {
+  'name': 'GNE Cell Line',
+  'idType': 'GNECellline',
+  'selection': 'none'
+ });
   // generator-phovea:end
 };
 
