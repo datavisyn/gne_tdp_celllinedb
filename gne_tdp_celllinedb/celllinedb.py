@@ -1,0 +1,37 @@
+from tdp_core.dbview import DBViewBuilder, DBConnector, add_common_queries, inject_where, DBMapping
+
+idtype = 'Celline2' # idtype of our rows
+
+columns = ['tissuediagnosis', 'primarytissue', 'celllinename', 'age', 'gender', 'species', 'canonicalname', 'ccle_name']
+
+# main dictionary containing all views registered for this plugin
+views = dict()
+
+views['celllines'] = DBViewBuilder().idtype(idtype).table('sinfo') \
+.query("""SELECT d.clid as id, d.* FROM sinfo d """) \
+.derive_columns() \
+.assign_ids() \
+.call(inject_where) \
+.build()
+
+# .column('tissue', type='categorical') \
+
+# notes:
+# by convention the 'id' column contains the identifier column of a row
+# derive_columns ... try to automatically derive column and column types
+# column(column, attrs) ... explicitly set a column type
+# assign_ids ... the tdp server should automatically manage and assign unique integer ids based on the 'id' column
+# .call(inject_where) ... utility to inject a where clause that is used for dynamic filtering
+
+# create a set of common queries
+add_common_queries(views, 'sinfo', idtype, 'clid as id', columns)
+
+
+def create():
+  """
+  factory method to build this extension
+  :return:
+  """
+  connector = DBConnector(views)
+  connector.description = 'sample connector to the celllinedb database'
+  return connector

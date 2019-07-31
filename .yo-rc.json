@@ -1,0 +1,32 @@
+{
+  "generator-phovea": {
+    "type": "lib-slib",
+    "modules": [
+      "tdp_core"
+    ],
+    "libraries": [],
+    "libraryAliases": {},
+    "libraryExternals": [],
+    "name": "gne_tdp_celllinedb",
+    "author": "Genentech Inc.",
+    "today": "Tue, 30 Jul 2019 22:51:12 GMT",
+    "githubAccount": "genentech",
+    "sextensions": [
+      {
+        "type": "tdp-sql-database-definition",
+        "id": "celllinedb",
+        "module": "celllinedb",
+        "extras": {
+          "configKey": "gne_tdp_celllinedb"
+        }
+      }
+    ],
+    "unknown": {
+      "requirements": [],
+      "dockerPackages": []
+    },
+    "entries": "./index.js",
+    "ignores": [],
+    "extensions": []
+  }
+}

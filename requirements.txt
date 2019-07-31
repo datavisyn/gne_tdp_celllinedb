@@ -1,0 +1,2 @@
+-e git+https://github.com/datavisyn/tdp_core.git@develop#egg=tdp_core
+mysql-connector-python==8.0.17
