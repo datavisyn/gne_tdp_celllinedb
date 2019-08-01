@@ -64,6 +64,16 @@
           "idType": "Ensembl",
           "selection": "chooser"
         }
+      },
+      {
+        "type": "tdpView",
+        "id": "detail_table",
+        "module": "views/DetailTable",
+        "extras": {
+          "name": "Detail Table",
+          "idType": "GNECellline",
+          "selection": "multiple"
+        }
       }
     ]
   }

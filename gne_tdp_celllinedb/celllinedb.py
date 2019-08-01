@@ -7,6 +7,23 @@ columns = ['tissuediagnosis', 'primarytissue', 'celllinename', 'age', 'gender', 
 # main dictionary containing all views registered for this plugin
 views = dict()
 
+views['celllines_by_id'] = DBViewBuilder().idtype(idtype).table('sinfo') \
+  .query("""SELECT d.clid as id, d.* FROM sinfo d WHERE d.clid IN {ids}""") \
+  .replace('ids') \
+  .derive_columns() \
+  .column('tissue', type='categorical') \
+  .column('primarytissue', type='categorical') \
+  .column('primarytissuemetaclass', type='categorical') \
+  .column('tissuediagnosis', type='categorical') \
+  .column('tissuediagnosismetaclass', type='categorical') \
+  .column('gender', type='categorical') \
+  .column('species', type='categorical') \
+  .column('ethnicity', type='categorical') \
+  .column('msi_status', type='categorical') \
+  .assign_ids() \
+  .call(inject_where) \
+  .build()
+
 views['celllines'] = DBViewBuilder().idtype(idtype).table('sinfo') \
   .query("""SELECT d.clid as id, d.* FROM sinfo d """) \
   .derive_columns() \

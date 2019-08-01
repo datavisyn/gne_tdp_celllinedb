@@ -68,6 +68,18 @@ module.exports = function (registry) {
       // 'order': 0
     }
   });
+
+
+  registry.push('tdpView', 'detail_table', function() { return import('./src/views/DetailTable'); }, {
+  'name': 'Detail Table',
+  'idType': 'GNECellline',
+  'selection': 'multiple',
+  'group': {
+    'name': 'GNE Resources',
+    // 'order': 0
+  }
+  
+ });
   // generator-phovea:end
 };
 
